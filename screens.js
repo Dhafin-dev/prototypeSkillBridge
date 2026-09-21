@@ -219,7 +219,7 @@ const STUDENT_SCREENS = [
     tabs: 1,
     html: `
     <div class="m-appbar">
-      <div onclick="go(0)" style="cursor:pointer;padding:4px">${ic('chevronR','i-sm','style="transform:rotate(180deg)"')}</div>
+      <div class="back-btn" onclick="go(0)">${ic('chevronR','i-sm','style="transform:rotate(180deg)"')}</div>
       <div>
         <h1>Detail Kebutuhan Proyek</h1>
         <div class="sub">CV Kreasi Digital Nusantara · Surabaya</div>
@@ -288,6 +288,7 @@ const STUDENT_SCREENS = [
     tabs: 2,
     html: `
     <div class="m-appbar">
+      <div class="back-btn" onclick="go(0)">${ic('chevronR','i-sm','style="transform:rotate(180deg)"')}</div>
       <div>
         <h1>Ruang Kerja Kolaboratif</h1>
         <div class="sub">Workspace #1 · Redesain Kopi Kenangan Rasa</div>
@@ -364,6 +365,7 @@ const STUDENT_SCREENS = [
     tabs: 3,
     html: `
     <div class="m-appbar">
+      <div class="back-btn" onclick="go(0)">${ic('chevronR','i-sm','style="transform:rotate(180deg)"')}</div>
       <div>
         <h1>Profil &amp; Portofolio Mahasiswa</h1>
         <div class="sub">Universitas Airlangga · S1 Sistem Informasi</div>
@@ -506,6 +508,7 @@ const UMKM_SCREENS = [
     tabs: 1,
     html: `
     <div class="m-appbar">
+      <div class="back-btn" onclick="go(0)">${ic('chevronR','i-sm','style="transform:rotate(180deg)"')}</div>
       <div>
         <h1>Pasang Kebutuhan Proyek</h1>
         <div class="sub">Formulir Penerbitan Brief untuk Mahasiswa</div>
@@ -557,6 +560,7 @@ const UMKM_SCREENS = [
     tabs: 2,
     html: `
     <div class="m-appbar">
+      <div class="back-btn" onclick="go(0)">${ic('chevronR','i-sm','style="transform:rotate(180deg)"')}</div>
       <div>
         <h1>Ranking Pelamar (SkillMatch)</h1>
         <div class="sub">Proyek: Website Katalog Digital UMKM</div>
@@ -666,6 +670,7 @@ const UMKM_SCREENS = [
     tabs: 3,
     html: `
     <div class="m-appbar">
+      <div class="back-btn" onclick="go(0)">${ic('chevronR','i-sm','style="transform:rotate(180deg)"')}</div>
       <div>
         <h1>Evaluasi Luaran &amp; Ulasan</h1>
         <div class="sub">Tinjau Deliverables Mahasiswa</div>
@@ -785,6 +790,7 @@ const ADMIN_SCREENS = [
     tabs: 1,
     html: `
     <div class="m-appbar">
+      <div class="back-btn" onclick="go(0)">${ic('chevronR','i-sm','style="transform:rotate(180deg)"')}</div>
       <div>
         <h1>Moderasi Proyek Publik</h1>
         <div class="sub">Kontrol Status Publikasi Brief UMKM</div>
@@ -846,6 +852,7 @@ const ADMIN_SCREENS = [
     tabs: 2,
     html: `
     <div class="m-appbar">
+      <div class="back-btn" onclick="go(0)">${ic('chevronR','i-sm','style="transform:rotate(180deg)"')}</div>
       <div>
         <h1>Master Kategori &amp; Audit Log</h1>
         <div class="sub">Integritas Data &amp; Keamanan Platform</div>
@@ -964,19 +971,22 @@ function renderMobile() {
   // Render Phone Scroll Area
   const mscroll = document.getElementById('mscroll');
   if (mscroll) {
+    mscroll.scrollTop = 0;
     mscroll.innerHTML = sc.html;
 
     // Apply active hero wallpaper
     const hero = mscroll.querySelector('.hero');
+    const statusBar = document.querySelector('.screen .status');
     if (hero) {
       const mode = WP_MODE[WP] || {};
       hero.classList.toggle('lightw', !!mode.light);
-      const statusBar = document.querySelector('.screen .status');
       if (statusBar) statusBar.classList.toggle('dark', !!mode.light);
 
       const existingWp = hero.querySelector('.wp');
       if (existingWp) existingWp.remove();
       hero.insertAdjacentHTML('afterbegin', HERO_BG[WP]());
+    } else {
+      if (statusBar) statusBar.classList.add('dark');
     }
   }
 
