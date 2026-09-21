@@ -33,21 +33,15 @@ Prototipe ini dirancang khusus untuk keperluan presentasi dan pitching kepada pa
 ### 1. Jalankan di Lokal (Localhost)
 Cukup buka file `index.html` di peramban web modern (Google Chrome / Microsoft Edge / Firefox), atau buka melalui web server lokal.
 
-### 2. Deploy ke GitHub Pages (Gratis & Cepat)
-Repository ini telah dilengkapi dengan GitHub Actions workflow `.github/workflows/deploy.yml`.
+### 2. Status Deploy GitHub Pages
+Repository ini telah terhubung ke `https://github.com/Dhafin-dev/prototypeSkillBridge.git` dan telah dilengkapi dengan GitHub Actions workflow `.github/workflows/deploy.yml`.
 
-Langkah deploy:
-1. Buat repository publik baru di GitHub dengan nama: `skillbridge-prototype` (atau nama lain yang Anda inginkan).
-2. Di folder ini, jalankan perintah git remote dan push:
-   ```bash
-   git remote add origin git@github.com:Dhafin-dev/skillbridge-prototype.git
-   git branch -M main
-   git push -u origin main
+Untuk mengaktifkan GitHub Pages:
+1. Di repository GitHub Anda (**Dhafin-dev/prototypeSkillBridge**), masuk ke menu **Settings** → **Pages**.
+2. Pada bagian **Build and deployment** → **Source**, pilih **GitHub Actions**.
+3. Website prototipe Anda akan otomatis aktif di:
    ```
-3. Di repository GitHub Anda, masuk ke **Settings** &rarr; **Pages** &rarr; Pada bagian **Build and deployment**, pilih **Source: GitHub Actions**.
-4. Website prototipe Anda akan otomatis aktif di:
-   ```
-   https://dhafin-dev.github.io/skillbridge-prototype/
+   https://dhafin-dev.github.io/prototypeSkillBridge/
    ```
 
 ---
