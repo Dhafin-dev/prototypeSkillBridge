@@ -5,18 +5,18 @@
 ---
 
 ## 🌟 Tentang Prototipe Ini
-Prototipe ini dirancang khusus untuk keperluan presentasi dan pitching kepada para pemangku kepentingan (*stakeholders*):
-1. **Dosen Pembimbing & Pimpinan Kampus (Dekanat/Rektorat)**: Memperlihatkan kepatuhan terhadap standar MBKM, pencapaian **IKU 2** (Mahasiswa berkegiatan di luar kampus) & **IKU 6** (Kemitraan industri riil), dan ekuivalensi SKS terstruktur.
-2. **Mitra UMKM / Industri**: Memperlihatkan kemudahan penerbitan brief proyek digitalisasi tanpa beban teknis, serta efisiensi kurasi kandidat menggunakan mesin rekomendasi cerdas.
-3. **Mahasiswa (Talenta)**: Menampilkan pencocokan otomatis keahlian (*NLP SkillMatch 90%+*), monitoring pengerjaan terstruktur dalam ruang kerja (*workspace*), dan portofolio terverifikasi industri dengan rating bintang dan e-sertifikat.
+Prototipe ini merefleksikan arsitektur dan modul nyata yang telah dikembangkan pada proyek **SkillBridge Hub**:
+1. **Mahasiswa (Talenta — Persona: Ahmad Dhafin Al Farisy)**: Eksplorasi katalog proyek, analisis kedekatan vektor NLP SkillMatch (TF-IDF & Cosine Similarity), pengajuan lamaran pitching, pengelolaan checklist tugas milestone di ruang kerja (Workspace), dan akumulasi skor portofolio terverifikasi.
+2. **Mitra UMKM (Persona: Hendra Setiawan — CV Kreasi Digital Nusantara & Sari Wahyuni — Kedai Kopi Kenangan)**: Penerbitan brief proyek terpandu, pemeringkatan pelamar cerdas (*Candidate Ranking*), inisiasi workspace kolaboratif, verifikasi deliverables, serta pemberian ulasan rating bintang 1-5.
+3. **Administrator Tata Kelola (Admin SkillBridge Hub)**: Pengawasan statistik ekosistem, moderasi status publikasi brief proyek (PUBLISHED/DRAFT/ACTIVE), manajemen master kategori, dan pencatatan audit log keamanan.
 
 ---
 
 ## 🚀 Fitur Utama
 
 ### 1. Mode Surface Ganda (*Dual Surface Showcase*)
-- 📱 **Aplikasi Mobile**: Simulasi smartphone interaktif untuk 3 peran (*Mahasiswa*, *Mitra UMKM*, dan *Dosen Pembimbing*) lengkap dengan panel catatan argumentasi pitching (*Rationale Card*) di sisi kanan.
-- 💻 **Dashboard Kampus & Industri**: Dasbor web eksekutif ala enterprise (Icon Rail 104px + Subnav 220px + Main Canvas) untuk analitik data, kurasi proyek, monitoring SLA workspace, dan rekapitulasi SKS MBKM.
+- 📱 **Aplikasi Mobile**: Simulasi smartphone interaktif untuk 3 peran sistem (*Mahasiswa*, *Mitra UMKM*, dan *Administrator*) lengkap dengan kartu penjelasan implementasi arsitektur di sisi kanan.
+- 💻 **Dashboard Web Platform**: Dasbor web eksekutif (Sidebar Rail + Subnav + Main Canvas) yang merefleksikan tampilan blade Laravel (`home.blade.php`, `projects/candidates.blade.php`, `workspaces/show.blade.php`, `admin/dashboard.blade.php`).
 
 ### 2. Pilihan Tema Visual Hero (6 Varian)
 - **1 · Vibrant Blue**: Identitas resmi SkillBridge modern & dinamis.

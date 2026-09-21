@@ -1,4 +1,11 @@
-/* ─── SkillBridge Hub: Screens & Interactive Mobile Data ─────────────────────── */
+/* ─── SkillBridge Hub: Accurate Interactive Screens & Models ──────────────────
+   Reflecting EXACT Codebase & Database Seeder of SkillBridge:
+   - Personas: Ahmad Dhafin Al Farisy (Student), Hendra Setiawan (UMKM), Admin SkillBridge Hub
+   - Categories: Web Development, UI/UX & Graphic Design, Digital Marketing & Branding, Data & AI Solutions
+   - Projects: Katalog Digital UMKM (CV Kreasi Digital), UI/UX Kopi Kenangan Rasa, Dashboard Penjualan Cloud
+   - NLP Engine: FastAPI TF-IDF Vectorizer & Cosine Similarity Candidate Ranking
+   - Collaboration: Workspaces, Dynamic Progress %, Task Checklists, Deliverables, Two-Way Reviews
+────────────────────────────────────────────────────────────────────────────── */
 
 const I = {
   home: '<path d="M4 10.5L12 4l8 6.5V20a1 1 0 01-1 1h-4v-6h-6v6H5a1 1 0 01-1-1z"/>',
@@ -17,22 +24,24 @@ const I = {
   badge: '<path d="M12 2l3 6 6 .8-4.5 4.5 1 6.2-5.5-3.2-5.5 3.2 1-6.2L2 8.8l6-.8z"/>',
   pin: '<path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/>',
   chevronR: '<path d="M9 5l7 7-7 7"/>',
-  arrowUpRight: '<path d="M7 17L17 7M7 7h10v10"/>',
   shield: '<path d="M12 3l7.5 3.5v5c0 4.3-3.1 8.2-7.5 9.5-4.4-1.3-7.5-5.2-7.5-9.5v-5z"/>',
   building: '<path d="M4 21V5.5L12 3l8 2.5V21"/><path d="M2.5 21h19M9 9h.01M15 9h.01M9 13h.01M15 13h.01M10 21v-4h4v4"/>',
   cpu: '<rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/>',
   download: '<path d="M12 4v12M7 11l5 5 5-5M4 19h16"/>',
   send: '<path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>',
-  plus: '<path d="M12 5v14M5 12h14"/>'
+  plus: '<path d="M12 5v14M5 12h14"/>',
+  code: '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>',
+  palette: '<circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.6-.7 1.6-1.6 0-.4-.2-.8-.5-1.1-.3-.3-.4-.7-.4-1.1 0-.9.7-1.6 1.6-1.6H16c3.3 0 6-2.7 6-6 0-5.5-4.5-10-10-10z"/>',
+  megaphone: '<path d="M3 11l19-9-9 19-2-8-8-2z"/>'
 };
 
 const ic = (n, c = 'i') => `<svg class="${c}" viewBox="0 0 24 24">${I[n] || ''}</svg>`;
-const rp = (n) => 'Rp' + n.toLocaleString('id-ID');
+const rp = (n) => typeof n === 'number' ? 'Rp ' + n.toLocaleString('id-ID') : n;
 
-/* ─── Hero Wallpaper Engine ─────────────────────────────────────────────── */
-let WP = 'vibrant';
+/* ─── Hero Wallpaper Variants ────────────────────────────────────────────── */
+let WP = 'indigo';
 const HERO_BG = {
-  vibrant: () => `
+  indigo: () => `
     <div class="wp wp1">
       <div class="glow"></div>
       <div class="ring"></div>
@@ -56,7 +65,7 @@ const HERO_BG = {
   white: () => `
     <div class="wp wp5">
       <div class="soft-blob"></div>
-      <div class="scrim" style="background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(241,245,249,.85))"></div>
+      <div class="scrim" style="background:linear-gradient(180deg,rgba(255,255,255,.15),rgba(241,245,249,.85))"></div>
     </div>`,
   violet: () => `
     <div class="wp wp6">
@@ -71,7 +80,7 @@ const WP_MODE = {
 
 function setWp(w) {
   WP = w;
-  ['vibrant', 'unair', 'emerald', 'slate', 'white', 'violet'].forEach(x => {
+  ['indigo', 'unair', 'emerald', 'slate', 'white', 'violet'].forEach(x => {
     const el = document.getElementById('wp-' + x);
     if (el) el.classList.toggle('on', x === w);
   });
@@ -80,118 +89,132 @@ function setWp(w) {
 
 /* ══════════════════════════════════════════════════════════════════════════════
    ROLE 1: MAHASISWA / TALENTA (STUDENT)
+   Persona: Ahmad Dhafin Al Farisy (NIM: 187241057, S1 Sistem Informasi UNAIR)
    ══════════════════════════════════════════════════════════════════════════════ */
 const STUDENT_SCREENS = [
   {
-    name: 'Beranda Talenta',
+    name: 'Beranda Mahasiswa',
     note: {
-      tag: 'Mahasiswa · Peluang & AI Match',
-      h: 'Personalisasi Proyek Berbasis Profil NLP',
+      tag: 'Mahasiswa · Beranda & NLP Match',
+      h: 'Personalisasi Proyek Berbasis Profil NLP Mahasiswa',
       p: [
-        '<b>Masalah nyata:</b> Mahasiswa sering bingung memilih proyek yang cocok dengan keahliannya di antara ratusan lowongan acak.',
-        'Di SkillBridge Hub, mesin <b>NLP SkillMatch</b> menganalisis kata kunci keahlian, minat, dan riwayat tugas kuliah untuk menghitung skor kecocokan persentase (*Cosine Similarity*).',
-        '<b>Kartu Fokus</b> terdepan langsung menjawab status lamaran aktif tanpa perlu bolak-balik cek email.'
+        '<b>Sesuai Implementasi:</b> Merefleksikan akun mahasiswa <code>Ahmad Dhafin Al Farisy</code> (NIM: 187241057, S1 Sistem Informasi UNAIR) dengan <b>Skor Portofolio: 450</b>.',
+        'Menampilkan rekomendasi teratas dari <b>FastAPI SkillMatch Engine</b>: Proyek <i>Website Katalog Digital UMKM</i> dengan skor kecocokan <b>92.5% MATCH</b>.',
+        'Menyediakan penjelajahan 4 kategori proyek resmi: <i>Web Development</i>, <i>UI/UX & Graphic Design</i>, <i>Digital Marketing</i>, dan <i>Data & AI</i>.'
       ],
-      src: 'Referensi: Algoritma TF-IDF & Cosine Similarity pada Dokumen Perencanaan (BAB 4.6).'
+      src: 'Sesuai dengan DatabaseSeeder.php & home.blade.php'
     },
     tabs: 0,
     html: `
     <div class="hero">
       <div class="fg">
-        <div class="greet">Selamat Pagi, Mahasiswa 👋</div>
-        <div class="name">Ahmad Dhafin</div>
+        <div class="greet">Selamat Datang, Mahasiswa 👋</div>
+        <div class="name">Ahmad Dhafin Al Farisy</div>
         <div class="sub-meta">
-          <span>S1 Sistem Informasi · UNAIR</span>
-          <span class="badge">IPK 3.89</span>
+          <span>Universitas Airlangga · S1 Sistem Informasi</span>
+          <span class="badge" style="background:#38bdf8;color:#0f172a">Skor Portofolio: 450</span>
         </div>
       </div>
     </div>
 
+    <!-- Active Application Status Card -->
     <div class="focus-card">
       <div class="head">
-        <span>LAMARAN BERJALAN</span>
-        <span class="pill ok" style="background:rgba(255,255,255,.25);color:#fff">Wawancara Online</span>
+        <span>LAMARAN PROYEK AKTIF</span>
+        <span class="pill ok" style="background:rgba(255,255,255,.25);color:#fff">Status: PENDING</span>
       </div>
-      <div class="title">CV Tanggulangin Leather Goods</div>
-      <div class="desc">Redesain UI/UX &amp; Katalog E-Commerce Pengrajin</div>
-      <div style="margin-top:10px">
-        <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;opacity:.9">
-          <span>Proses Seleksi</span>
-          <span>Tahap 2 dari 3</span>
-        </div>
-        <div class="bar" style="height:5px;background:rgba(255,255,255,.25)"><i style="width:66%;background:#fff"></i></div>
+      <div class="title">Pengembangan Website Katalog Digital &amp; Sistem Order UMKM</div>
+      <div class="desc">CV Kreasi Digital Nusantara · Surabaya</div>
+      <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:11.5px;opacity:.95">
+        <span>⚡ Skor SkillMatch: <b>92.5%</b> (Rank #1)</span>
+        <span style="font-weight:700">Kompensasi: Rp 2.000.000</span>
       </div>
       <div class="act">
         <div class="btn-solid" onclick="go(1)">${ic('doc','i-sm')} Lihat Detail Proyek</div>
-        <div class="btn-ghost" onclick="go(2)">Ruang Kerja</div>
+        <div class="btn-ghost" onclick="go(2)">Ruang Kerja Aktif</div>
       </div>
     </div>
 
     <div class="m-pad">
+      <!-- 4 Category Grid -->
       <div class="m-sec-h">
-        <h3>Rekomendasi NLP SkillMatch</h3>
-        <a href="javascript:void(0)" onclick="go(1)">Lihat Semua (8)</a>
+        <h3>Kategori Proyek</h3>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px">
+        <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 6px;text-align:center">
+          <div style="width:34px;height:34px;border-radius:10px;background:#e0e7ff;color:#4338ca;display:flex;align-items:center;justify-content:center;margin:0 auto 6px">${ic('code','i-sm')}</div>
+          <div style="font-size:10px;font-weight:700;line-height:1.2">Web Dev</div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 6px;text-align:center">
+          <div style="width:34px;height:34px;border-radius:10px;background:#fce7f3;color:#be185d;display:flex;align-items:center;justify-content:center;margin:0 auto 6px">${ic('palette','i-sm')}</div>
+          <div style="font-size:10px;font-weight:700;line-height:1.2">UI/UX</div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 6px;text-align:center">
+          <div style="width:34px;height:34px;border-radius:10px;background:#fef3c7;color:#b45309;display:flex;align-items:center;justify-content:center;margin:0 auto 6px">${ic('megaphone','i-sm')}</div>
+          <div style="font-size:10px;font-weight:700;line-height:1.2">Marketing</div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 6px;text-align:center">
+          <div style="width:34px;height:34px;border-radius:10px;background:#ecfdf5;color:#047857;display:flex;align-items:center;justify-content:center;margin:0 auto 6px">${ic('cpu','i-sm')}</div>
+          <div style="font-size:10px;font-weight:700;line-height:1.2">Data/AI</div>
+        </div>
       </div>
 
-      <!-- Proyek 1 (Top Match) -->
-      <div class="m-card" style="border-left:4px solid var(--ok);cursor:pointer" onclick="go(1)">
+      <div class="m-sec-h">
+        <h3>Rekomendasi Proyek (NLP SkillMatch)</h3>
+        <a href="javascript:void(0)" onclick="go(1)">Lihat Semua</a>
+      </div>
+
+      <!-- Proyek 1: Sesuai Seeder -->
+      <div class="m-card" style="border-left:4px solid #10b981;cursor:pointer" onclick="go(1)">
         <div style="display:flex;justify-content:space-between;align-items:flex-start">
-          <span class="match-score high">${ic('spark','i-xs')} 94% MATCH</span>
-          <span style="font-size:11.5px;font-weight:700;color:var(--brand)">${rp(2500000)}</span>
+          <span class="match-score high">${ic('spark','i-xs')} 92.5% MATCH</span>
+          <span style="font-size:12px;font-weight:800;color:var(--brand)">Rp 2.000.000</span>
         </div>
         <div style="font-size:14px;font-weight:800;color:var(--ink);margin-top:8px">
-          Redesain UI/UX &amp; Katalog Digital
+          Pengembangan Website Katalog Digital &amp; Sistem Order UMKM
         </div>
-        <div style="font-size:12px;color:var(--muted);margin-top:2px">
-          CV Tanggulangin Leather · Sidoarjo
+        <div style="font-size:11.5px;color:var(--muted);margin-top:2px">
+          CV Kreasi Digital Nusantara · Surabaya · ⏱️ 4 Minggu
+        </div>
+        <div class="skill-tags">
+          <span class="skill-pill match">${ic('check','i-xs')} Laravel</span>
+          <span class="skill-pill match">${ic('check','i-xs')} Blade</span>
+          <span class="skill-pill match">${ic('check','i-xs')} PostgreSQL</span>
+          <span class="skill-pill match">${ic('check','i-xs')} Tailwind CSS</span>
+        </div>
+      </div>
+
+      <!-- Proyek 2: Sesuai Seeder -->
+      <div class="m-card" style="cursor:pointer" onclick="go(1)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <span class="pill brand" style="font-size:10.5px">Active Workspace</span>
+          <span style="font-size:12px;font-weight:800;color:var(--brand)">Rp 1.500.000</span>
+        </div>
+        <div style="font-size:14px;font-weight:800;color:var(--ink);margin-top:8px">
+          Redesain UI/UX Web &amp; Desain Kemasan Kopi Kenangan Rasa
+        </div>
+        <div style="font-size:11.5px;color:var(--muted);margin-top:2px">
+          Kedai Kopi Kenangan Rasa · Malang · ⏱️ 3 Minggu
         </div>
         <div class="skill-tags">
           <span class="skill-pill match">${ic('check','i-xs')} Figma</span>
           <span class="skill-pill match">${ic('check','i-xs')} UI/UX Design</span>
-          <span class="skill-pill match">${ic('check','i-xs')} Tailwind</span>
-          <span class="skill-pill missing">SEO Dasar</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted);margin-top:10px;padding-top:8px;border-top:1px solid var(--line-soft)">
-          <span>⏱️ Durasi: 4 Minggu</span>
-          <span style="font-weight:700;color:var(--ok)">🎓 Ekuivalensi 3 SKS</span>
-        </div>
-      </div>
-
-      <!-- Proyek 2 -->
-      <div class="m-card" style="cursor:pointer" onclick="go(1)">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start">
-          <span class="match-score med">${ic('spark','i-xs')} 88% MATCH</span>
-          <span style="font-size:11.5px;font-weight:700;color:var(--brand)">${rp(2000000)}</span>
-        </div>
-        <div style="font-size:14px;font-weight:800;color:var(--ink);margin-top:8px">
-          Sistem Kasir &amp; Stok Jamu Herbal
-        </div>
-        <div style="font-size:12px;color:var(--muted);margin-top:2px">
-          UD Jamu Barokah · Surabaya
-        </div>
-        <div class="skill-tags">
-          <span class="skill-pill match">${ic('check','i-xs')} Laravel</span>
-          <span class="skill-pill match">${ic('check','i-xs')} PostgreSQL</span>
-          <span class="skill-pill missing">Thermal Printer</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted);margin-top:10px;padding-top:8px;border-top:1px solid var(--line-soft)">
-          <span>⏱️ Durasi: 6 Minggu</span>
-          <span style="font-weight:700;color:var(--ok)">🎓 Ekuivalensi 4 SKS</span>
+          <span class="skill-pill match">${ic('check','i-xs')} Wireframing</span>
         </div>
       </div>
     </div>`
   },
   {
-    name: 'Detail Proyek & AI Match',
+    name: 'Detail Proyek & Lamaran',
     note: {
-      tag: 'Kecerdasan Buatan · Rekomendasi',
-      h: 'Transparansi Analisis SkillMatch 94%',
+      tag: 'Katalog & Pengajuan Lamaran',
+      h: 'Detail Kebutuhan Proyek & Form Lamaran Pitching',
       p: [
-        '<b>Bukan sekadar angka:</b> Algoritma membedah kecocokan keterampilan yang sudah dimiliki (*Matched Skills*) dan memberi tahu keterampilan tambahan yang perlu dipelajari (*Missing Skills*).',
-        'Mahasiswa mendapatkan kepastian bobot <b>Ekuivalensi SKS (MBKM)</b> yang telah disetujui kurikulum program studi sebelum melamar.',
-        'Tombol lamaran mengirimkan ringkasan portofolio terverifikasi langsung ke dasbor kurasi UMKM.'
+        '<b>Sesuai Implementasi:</b> Merefleksikan tampilan <code>projects/show.blade.php</code>.',
+        'Memuat informasi lengkap: <i>Deskripsi Kebutuhan</i>, <i>Target Luaran (Deliverables Brief)</i>, <i>Required Skills</i>, durasi 4 Minggu, dan kompensasi stipend Rp 2.000.000.',
+        'Mahasiswa dapat mengisi <b>Pesan Pengajuan (Pitching)</b> yang nantinya dievaluasi oleh mesin NLP untuk menghasilkan skor kecocokan.'
       ],
-      src: 'Implementasi FastAPI service dengan Cosine Similarity terhadap deskripsi profil (BAB 4.6).'
+      src: 'Sesuai dengan projects/show.blade.php & ApplicationController.php'
     },
     tabs: 1,
     html: `
@@ -199,204 +222,194 @@ const STUDENT_SCREENS = [
       <div onclick="go(0)" style="cursor:pointer;padding:4px">${ic('chevronR','i-sm','style="transform:rotate(180deg)"')}</div>
       <div>
         <h1>Detail Kebutuhan Proyek</h1>
-        <div class="sub">CV Tanggulangin Leather · Sidoarjo</div>
+        <div class="sub">CV Kreasi Digital Nusantara · Surabaya</div>
       </div>
+      <span class="badge badge-success" style="margin-left:auto;font-size:10px;padding:3px 8px;border-radius:6px;background:#dcfce7;color:#15803d;font-weight:700">Terbuka</span>
     </div>
     <div class="m-pad" style="padding-top:14px">
-      <!-- AI Match Box -->
-      <div class="m-card" style="background:linear-gradient(135deg,#EFF6FF,#F5F3FF);border:1px solid #BFDBFE">
-        <div style="display:flex;align-items:center;justify-content:space-between">
-          <div style="display:flex;align-items:center;gap:8px">
-            <span style="width:34px;height:34px;border-radius:10px;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center">${ic('cpu','i-sm')}</span>
-            <div>
-              <div style="font-size:12px;font-weight:700;color:var(--brand-ink)">Analisis NLP SkillMatch</div>
-              <div style="font-size:10.5px;color:var(--muted)">Cosine Similarity: 0.942</div>
-            </div>
-          </div>
-          <span class="match-score high" style="font-size:13px;font-weight:900">94% MATCH</span>
-        </div>
-        <div style="font-size:12px;color:var(--body);line-height:1.5;margin-top:10px">
-          Profil keahlian dan riwayat proyek Figma Anda sangat cocok dengan kebutuhan digitalisasi katalog pengrajin ini.
-        </div>
-      </div>
-
-      <!-- Breakdown Skills -->
       <div class="m-card">
-        <div style="font-size:13px;font-weight:750;color:var(--ink);margin-bottom:8px">Keterampilan Terverifikasi:</div>
-        <div class="skill-tags">
-          <span class="skill-pill match">${ic('check','i-xs')} UI/UX Design System</span>
-          <span class="skill-pill match">${ic('check','i-xs')} Wireframing &amp; Testing</span>
-          <span class="skill-pill match">${ic('check','i-xs')} Responsive Web</span>
+        <div style="display:flex;gap:6px;margin-bottom:8px">
+          <span class="pill brand" style="font-size:10.5px">Web Development</span>
+          <span class="pill info" style="font-size:10.5px">⏱️ 4 Minggu</span>
         </div>
-        <div style="font-size:12px;font-weight:700;color:#C2410C;margin:12px 0 6px">Saran Nilai Tambah (Missing Skills):</div>
-        <div class="skill-tags">
-          <span class="skill-pill missing">Katalog Fotografi Ponsel</span>
-          <span class="skill-pill missing">Copywriting Produk</span>
+        <div style="font-size:16px;font-weight:800;line-height:1.3;color:var(--ink)">
+          Pengembangan Website Katalog Digital &amp; Sistem Order Produk UMKM
+        </div>
+        <div style="font-size:14px;font-weight:800;color:var(--brand);margin-top:8px">
+          Stipend: Rp 2.000.000
         </div>
       </div>
 
-      <!-- Benefit & Ringkasan -->
       <div class="m-card">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-          <div>
-            <div style="font-size:11px;color:var(--muted);font-weight:600">Insentif / Stipend</div>
-            <div style="font-size:15px;font-weight:800;color:var(--brand);margin-top:2px">${rp(2500000)}</div>
-          </div>
-          <div>
-            <div style="font-size:11px;color:var(--muted);font-weight:600">Konversi Akademik</div>
-            <div style="font-size:15px;font-weight:800;color:var(--ok);margin-top:2px">3 SKS MBKM</div>
-          </div>
+        <div style="font-size:12.5px;font-weight:750;color:var(--ink);margin-bottom:4px">Deskripsi Kebutuhan Proyek:</div>
+        <p style="font-size:12px;color:var(--body);line-height:1.6">
+          Kami membutuhkan talenta mahasiswa untuk merancang dan mengimplementasikan website katalog produk digital berbasis Laravel dan Blade. Website harus memiliki katalog interaktif, filter kategori produk, formulir pemesanan otomatis terhubung ke WhatsApp bisnis, dan panel pengelolaan barang.
+        </p>
+
+        <div style="font-size:12.5px;font-weight:750;color:var(--ink);margin:12px 0 4px">Target Luaran yang Diharapkan (Deliverables):</div>
+        <div style="background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:11.5px;color:var(--body)">
+          Source code repository aplikasi Laravel, panduan konfigurasi basis data, dan dokumentasi singkat cara unggah produk.
         </div>
-        <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--line-soft);font-size:12px;color:var(--body);line-height:1.5">
-          <b>Target Luaran:</b> Prototipe web responsif untuk 40+ varian tas kulit, pengujian kemudahan navigasi bagi pembeli luar kota, dan panduan upload admin.
+
+        <div style="font-size:12.5px;font-weight:750;color:var(--ink);margin:12px 0 6px">Keahlian Wajib (Required Skills):</div>
+        <div class="skill-tags">
+          <span class="skill-pill match">${ic('check','i-xs')} Laravel</span>
+          <span class="skill-pill match">${ic('check','i-xs')} Blade</span>
+          <span class="skill-pill match">${ic('check','i-xs')} PHP</span>
+          <span class="skill-pill match">${ic('check','i-xs')} PostgreSQL</span>
+          <span class="skill-pill match">${ic('check','i-xs')} HTML/CSS</span>
         </div>
       </div>
 
-      <button class="btn" style="background:var(--brand);color:#fff;border-radius:14px;padding:14px;font-weight:750;width:100%;box-shadow:0 6px 18px rgba(37,99,235,.25)" onclick="go(2)">
-        Ajukan Lamaran dengan Portofolio
-      </button>
+      <!-- Form Pengajuan Lamaran -->
+      <div class="m-card" style="border:1.5px solid #bfdbfe;background:#f0fdf4">
+        <div style="font-size:12.5px;font-weight:750;color:var(--ink)">Ajukan Lamaran Portofolio:</div>
+        <div style="font-size:11px;color:var(--muted);margin:3px 0 8px">Tuliskan pesan pitching singkat untuk meyakinkan mitra UMKM.</div>
+        <textarea readonly style="width:100%;border:1px solid #cbd5e1;border-radius:8px;padding:8px;font:inherit;font-size:11.5px;color:var(--ink);resize:none;height:65px;background:#fff">Saya berpengalaman membangun aplikasi Laravel 11 dengan performa tinggi dan tata letak Blade responsif. Portofolio saya siap diaplikasikan langsung untuk katalog UMKM Anda.</textarea>
+        <button class="btn" style="background:#16a34a;color:#fff;border-radius:10px;padding:10px;font-weight:750;width:100%;margin-top:8px" onclick="go(2)">
+          Kirim Lamaran ke Mitra UMKM
+        </button>
+      </div>
     </div>`
   },
   {
     name: 'Ruang Kerja (Workspace)',
     note: {
-      tag: 'Kolaborasi · Milestone Terstruktur',
-      h: 'Pemantauan Pengerjaan Berbasis Milestone',
+      tag: 'Workspace · Proyek Berjalan',
+      h: 'Ruang Kerja Kolaboratif dengan Dynamic Progress',
       p: [
-        '<b>Mencegah proyek mangkrak:</b> Saat kandidat diterima, sistem langsung menerbitkan <b>Workspace Kolaboratif</b> dengan checklist tugas dan tenggat waktu yang disepakati.',
-        'Mahasiswa mencentang tugas dan mengunggah tautan hasil kerja (*deliverables*) seperti GitHub atau Figma.',
-        'UMKM dan Dosen dapat melihat persentase kemajuan secara transparan tanpa harus saling menagih di WhatsApp.'
+        '<b>Sesuai Implementasi:</b> Merefleksikan tampilan <code>workspaces/show.blade.php</code> untuk <b>Workspace #1 (Redesain UI/UX Kopi Kenangan Rasa)</b>.',
+        'Fitur utama: <b>Dynamic Progress 67%</b> yang terhitung otomatis dari rasio penyelesaian tugas checklist.',
+        'Tugas milestone nyata: <i>Kick-off</i> (Selesai), <i>User flow & wireframe</i> (Selesai), <i>Desain High-Fidelity & Mockup</i> (Sedang Berjalan).',
+        'Form penyerahan hasil kerja (*Deliverables Submission*): tautan Figma prototype dan catatan akhir.'
       ],
-      src: 'Sesuai Spesifikasi Ruang Kerja & Checklist Tugas (Tabel 4.5).'
+      src: 'Sesuai dengan workspaces/show.blade.php & WorkspaceController.php'
     },
     tabs: 2,
     html: `
     <div class="m-appbar">
       <div>
-        <h1>Ruang Kerja Kolaborasi</h1>
-        <div class="sub">CV Tanggulangin · Sprint 2</div>
+        <h1>Ruang Kerja Kolaboratif</h1>
+        <div class="sub">Workspace #1 · Redesain Kopi Kenangan Rasa</div>
       </div>
-      <span class="pill ok" style="margin-left:auto">75% Progres</span>
+      <span class="badge badge-primary" style="margin-left:auto;font-size:10px;padding:3px 8px;border-radius:6px;background:#e0e7ff;color:#3730a3;font-weight:700">⚡ ACTIVE</span>
     </div>
     <div class="m-pad" style="padding-top:14px">
-      <!-- Progress Bar Card -->
+      <!-- Dynamic Progress Card -->
       <div class="m-card">
-        <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700;margin-bottom:6px">
-          <span>Progres Milestone Proyek</span>
-          <span style="color:var(--brand)">3 dari 4 Tugas Tuntas</span>
+        <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:750;margin-bottom:6px">
+          <span>Pelacakan Kemajuan Proyek</span>
+          <span style="color:var(--brand)">67% Tuntas</span>
         </div>
-        <div class="bar" style="height:8px"><i style="width:75%"></i></div>
-        <div style="display:flex;gap:12px;margin-top:12px;font-size:11.5px;color:var(--muted)">
-          <span>📅 Batas Akhir: <b>15 Oktober</b></span>
-          <span>👥 Mentor: <b>H. Mochammad</b></span>
+        <div class="bar" style="height:8px"><i style="width:67%"></i></div>
+        <div style="display:flex;justify-content:space-between;margin-top:10px;font-size:11px;color:var(--muted)">
+          <span>Mitra: <b>Sari Wahyuni (Kopi Kenangan)</b></span>
+          <span style="color:#059669;font-weight:700">Stipend: Rp 1.500.000</span>
         </div>
       </div>
 
-      <!-- Checklist Tugas -->
+      <!-- Milestone Task Checklist -->
       <div class="m-card">
-        <div style="font-size:13px;font-weight:800;color:var(--ink);margin-bottom:10px">Daftar Tugas Milestone:</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <div style="font-size:13px;font-weight:800;color:var(--ink)">Checklist Tugas Milestone:</div>
+          <span class="pill brand" style="font-size:10px">+ Tambah Tugas</span>
+        </div>
 
         <div class="task-item">
           <div class="task-check done">${ic('check','i-xs')}</div>
           <div>
-            <div class="task-title done">Observasi katalog fisik &amp; wawancara produk unggulan</div>
-            <div class="task-meta">Diselesaikan 22 Sep · Diverifikasi UMKM</div>
+            <div class="task-title done">Kick-off dan Pengumpulan Aset Identitas Brand Kopi</div>
+            <div class="task-meta">Tuntas 10 hari lalu · Diverifikasi Mitra</div>
           </div>
         </div>
 
         <div class="task-item">
           <div class="task-check done">${ic('check','i-xs')}</div>
           <div>
-            <div class="task-title done">Penyusunan Wireframe &amp; User Flow E-Commerce</div>
-            <div class="task-meta">Tautan Figma terlampir · Disetujui Dosen</div>
-          </div>
-        </div>
-
-        <div class="task-item">
-          <div class="task-check done">${ic('check','i-xs')}</div>
-          <div>
-            <div class="task-title done">Desain High-Fidelity &amp; Komponen UI Design System</div>
-            <div class="task-meta">40 Halaman mobile &amp; desktop</div>
+            <div class="task-title done">Penyusunan User Flow dan Wireframe Antarmuka Menu</div>
+            <div class="task-meta">Tuntas 5 hari lalu · Draf Figma Disetujui</div>
           </div>
         </div>
 
         <div class="task-item">
           <div class="task-check" onclick="this.classList.toggle('done')"></div>
           <div>
-            <div class="task-title">Uji coba interaktivitas ke 5 pelanggan potensial</div>
-            <div class="task-meta" style="color:#D97706;font-weight:600">Sedang Berjalan · Tenggat 3 Hari</div>
+            <div class="task-title">Perancangan Visual High-Fidelity &amp; Desain Kemasan Vektor</div>
+            <div class="task-meta" style="color:#b45309;font-weight:700">Batas: 4 Hari Lagi</div>
           </div>
         </div>
       </div>
 
-      <!-- Deliverables Upload Box -->
-      <div class="m-card" style="background:#F8FAFC;border:1.5px dashed #CBD5E1">
-        <div style="font-size:12.5px;font-weight:750;color:var(--ink)">Serahkan Hasil Kerja (Deliverables)</div>
-        <div style="font-size:11px;color:var(--muted);margin:4px 0 10px">Tautan Figma Prototype / Kode GitHub / Laporan PDF</div>
-        <div style="display:flex;gap:8px">
-          <input type="text" value="https://figma.com/file/tanggulangin-redesign-v2" readonly style="flex:1;background:#fff;border:1px solid #CBD5E1;border-radius:10px;padding:8px 12px;font-size:11px;color:var(--ink)">
-          <button class="btn" style="width:auto;padding:0 14px;border-radius:10px;font-size:11.5px;background:var(--ok);color:#fff" onclick="go(3)">Kirim</button>
-        </div>
+      <!-- Deliverables Box -->
+      <div class="m-card" style="background:#f8fafc;border:1px solid var(--line)">
+        <div style="font-size:12.5px;font-weight:750;color:var(--ink)">Penyerahan Luaran (Deliverables):</div>
+        <div style="font-size:11px;color:var(--muted);margin:3px 0 8px">Tautan Figma / Repository / Google Drive</div>
+        <input type="text" readonly value="https://figma.com/file/sample-kopi-kenangan-redesign" style="width:100%;background:#fff;border:1px solid #cbd5e1;border-radius:8px;padding:8px;font-size:11px;color:var(--ink);margin-bottom:6px">
+        <div style="font-size:11px;color:#475569;font-style:italic">"Telah diselesaikan rancangan draf utama UI menu digital dan mockup packaging pouch kopi."</div>
       </div>
     </div>`
   },
   {
-    name: 'Portofolio Terverifikasi',
+    name: 'Profil & Portofolio',
     note: {
-      tag: 'Akuntabilitas · Rekam Jejak',
-      h: 'Portofolio yang Diakui Kampus & Industri',
+      tag: 'Profil & Reputasi Terverifikasi',
+      h: 'Profil Mahasiswa, Skor Portofolio & Ulasan Dua Arah',
       p: [
-        '<b>Nilai jual utama lulusan:</b> Bukan sekadar sertifikat seminar, melainkan rekam jejak hasil kerja nyata dengan bukti ulasan bintang dari pemilik usaha.',
-        'Dilengkapi <b>Lencana Resmi (Verified Industry Badge)</b> dan kode verifikasi QR yang bisa dipindai HRD perusahaan saat melamar kerja.',
-        'Nilai proyek otomatis tersinkronisasi ke transkrip akademik konversi MBKM.'
+        '<b>Sesuai Implementasi:</b> Merefleksikan tampilan <code>profile/show.blade.php</code>.',
+        'Menampilkan <b>Skor Portofolio: 450</b>, institusi Universitas Airlangga, resume URL PDF di Supabase Storage, dan taksonomi keahlian teknis.',
+        'Dilengkapi ulasan bintang resmi dari pemilik UMKM mitra (Hendra Setiawan) dari proyek <i>Dashboard Penjualan Harian</i> yang telah diselesaikan.'
       ],
-      src: 'Sesuai Sistem Ulasan Dua Arah & Akumulasi Skor Portofolio (BAB 2.3 FR-REV).'
+      src: 'Sesuai dengan profile/show.blade.php & ReviewController.php'
     },
     tabs: 3,
     html: `
     <div class="m-appbar">
       <div>
-        <h1>Portofolio Terverifikasi</h1>
-        <div class="sub">Rekam Jejak &amp; Lencana Industri</div>
+        <h1>Profil &amp; Portofolio Mahasiswa</h1>
+        <div class="sub">Universitas Airlangga · S1 Sistem Informasi</div>
       </div>
-      <span class="pill gold" style="margin-left:auto">⭐ 5.0 Rating</span>
+      <span class="pill gold" style="margin-left:auto">⭐ Skor: 450</span>
     </div>
     <div class="m-pad" style="padding-top:14px">
-      <!-- Verified Badge Card -->
-      <div class="m-card" style="text-align:center;padding:22px 18px;background:linear-gradient(180deg,#FFFFFF,#EFF6FF)">
-        <div style="width:56px;height:56px;border-radius:20px;background:linear-gradient(135deg,#2563EB,#1D4ED8);color:#fff;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(37,99,235,.3)">
-          ${ic('shield','i-lg')}
+      <!-- User Profile Header Card -->
+      <div class="m-card" style="text-align:center;padding:18px 14px">
+        <div style="width:54px;height:54px;border-radius:16px;background:linear-gradient(135deg,#312e81,#4338ca);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;margin-bottom:8px">
+          AD
         </div>
-        <div style="font-size:16px;font-weight:800;color:var(--ink);margin-top:10px">VERIFIED INDUSTRY TALENT</div>
-        <div style="font-size:12px;color:var(--muted);margin-top:2px">Sertifikasi Proyek Riil · Universitas Airlangga</div>
-        <div style="display:flex;justify-content:center;gap:4px;color:#F59E0B;margin-top:8px">
-          ${ic('star','i-sm')}${ic('star','i-sm')}${ic('star','i-sm')}${ic('star','i-sm')}${ic('star','i-sm')}
+        <div style="font-size:16px;font-weight:800;color:var(--ink)">Ahmad Dhafin Al Farisy</div>
+        <div style="font-size:11.5px;color:var(--muted)">NIM: 187241057 · Fullstack Software Engineer</div>
+        <p style="font-size:12px;color:var(--body);line-height:1.5;margin-top:8px;padding:0 8px">
+          Mahasiswa S1 Sistem Informasi Universitas Airlangga. Menguasai Laravel, Blade, PostgreSQL, dan FastAPI.
+        </p>
+      </div>
+
+      <!-- Skills Card -->
+      <div class="m-card">
+        <div style="font-size:12.5px;font-weight:750;margin-bottom:6px">Taksonomi Keahlian (Skills):</div>
+        <div class="skill-tags">
+          <span class="skill-pill match">Laravel</span>
+          <span class="skill-pill match">Blade</span>
+          <span class="skill-pill match">PHP</span>
+          <span class="skill-pill match">PostgreSQL</span>
+          <span class="skill-pill match">FastAPI</span>
+          <span class="skill-pill match">Python</span>
+          <span class="skill-pill match">Tailwind CSS</span>
+        </div>
+        <div style="margin-top:10px;padding-top:8px;border-top:1px solid var(--line-soft);display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:11.5px;color:var(--muted)">📄 Resume (CV PDF di Supabase)</span>
+          <span class="pill brand" style="font-size:10.5px;cursor:pointer">${ic('download','i-xs')} Unduh CV</span>
         </div>
       </div>
 
-      <!-- Testimoni UMKM -->
+      <!-- Review Card -->
       <div class="m-card">
-        <div style="font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.05em">Ulasan Pemilik Usaha (Mitra):</div>
-        <div style="font-size:13px;font-style:italic;color:var(--body);line-height:1.5;margin-top:8px">
-          "Mas Dhafin sangat profesional dalam mendengarkan keluhan pembeli kami. Hasil katalog desainnya modern dan membuat pesanan tas kulit dari luar Jawa naik signifikan!"
+        <div style="font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase">Ulasan Mitra UMKM Terverifikasi:</div>
+        <div style="display:flex;gap:4px;color:#f59e0b;font-size:16px;margin:6px 0">⭐⭐⭐⭐⭐ 5.0 / 5.0</div>
+        <div style="font-size:12px;font-style:italic;color:var(--body);line-height:1.5">
+          "Pengerjaan dashboard penjualan harian toko kami selesai tepat waktu dan kodenya sangat rapi. Sangat merekomendasikan talenta ini untuk UMKM lain."
         </div>
-        <div style="display:flex;align-items:center;gap:10px;margin-top:12px;padding-top:10px;border-top:1px solid var(--line-soft)">
-          <div style="width:34px;height:34px;border-radius:10px;background:#FEF3C7;color:#B45309;display:flex;align-items:center;justify-content:center;font-weight:750">HM</div>
-          <div>
-            <div style="font-size:12.5px;font-weight:700">H. Mochammad</div>
-            <div style="font-size:11px;color:var(--muted)">Owner CV Tanggulangin Leather Goods</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Detail Sertifikat Digital -->
-      <div class="m-card">
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <div>
-            <div style="font-size:13px;font-weight:750">E-Sertifikat MBKM No. 2026/FST/SB-082</div>
-            <div style="font-size:11px;color:var(--muted);margin-top:2px">Tervalidasi Dosen Pembimbing &amp; Dekanat</div>
-          </div>
-          <button class="pill brand" style="cursor:pointer">${ic('download','i-xs')} Unduh PDF</button>
+        <div style="margin-top:10px;display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted)">
+          <b>Hendra Setiawan</b> · CV Kreasi Digital Nusantara
         </div>
       </div>
     </div>`
@@ -404,202 +417,236 @@ const STUDENT_SCREENS = [
 ];
 
 /* ══════════════════════════════════════════════════════════════════════════════
-   ROLE 2: MITRA UMKM / INDUSTRI
+   ROLE 2: MITRA UMKM (Hendra Setiawan — CV Kreasi Digital Nusantara)
    ══════════════════════════════════════════════════════════════════════════════ */
 const UMKM_SCREENS = [
   {
     name: 'Beranda UMKM',
     note: {
-      tag: 'Mitra UMKM · Efisiensi Talenta',
-      h: 'Solusi Digitalisasi UMKM Tanpa Biaya Agensi Mahal',
+      tag: 'Mitra Usaha · Manajemen Proyek',
+      h: 'Dashboard Mitra UMKM & Publikasi Kebutuhan',
       p: [
-        '<b>Masalah nyata:</b> UMKM ingin go-digital namun tidak memiliki anggaran untuk menyewa agensi software house puluhan juta.',
-        'Melalui SkillBridge Hub, UMKM cukup mempublikasikan masalah bisnisnya. Sistem langsung mencarikan mahasiswa terbaik yang dibimbing dosen universitas.',
-        'Kartu fokus menampilkan <b>pelamar siap seleksi</b> yang sudah diurutkan berdasarkan skor AI.'
+        '<b>Sesuai Implementasi:</b> Merefleksikan akun UMKM <code>Hendra Setiawan</code> (CV Kreasi Digital Nusantara, Surabaya).',
+        'Menampilkan daftar brief proyek aktif yang diterbitkan oleh UMKM, jumlah pelamar yang masuk, dan tombol <b>+ Pasang Kebutuhan Proyek</b>.',
+        'Dilengkapi notifikasi langsung saat kandidat baru melamar melalui platform.'
       ],
-      src: 'Sesuai Analisis Pemangku Kepentingan SH-02 (Tabel 2.1).'
+      src: 'Sesuai dengan UmkmProfile model & ProjectController.php'
     },
     tabs: 0,
     html: `
     <div class="hero">
       <div class="fg">
         <div class="greet">Dashboard Mitra Usaha</div>
-        <div class="name">CV Tanggulangin Leather</div>
+        <div class="name">Hendra Setiawan</div>
         <div class="sub-meta">
-          <span>Sentra Industri Kulit Sidoarjo</span>
-          <span class="badge">Mitra Terverifikasi</span>
+          <span>CV Kreasi Digital Nusantara · Surabaya</span>
+          <span class="badge" style="background:#10b981;color:#fff">Usaha Kecil Terdaftar</span>
         </div>
       </div>
     </div>
 
+    <!-- Active Projects Focus Card -->
     <div class="focus-card emerald">
       <div class="head">
-        <span>PELAMAR MASUK</span>
-        <span class="pill ok" style="background:rgba(255,255,255,.25);color:#fff">3 Kandidat Siap</span>
+        <span>PELAMAR PROYEK MASUK</span>
+        <span class="pill ok" style="background:rgba(255,255,255,.25);color:#fff">3 Pelamar Siap Seleksi</span>
       </div>
-      <div class="title">Seleksi Pelamar SkillMatch</div>
-      <div class="desc">Proyek: Redesain UI/UX &amp; Katalog E-Commerce</div>
+      <div class="title">Website Katalog Digital &amp; Sistem Order UMKM</div>
+      <div class="desc">3 Mahasiswa melamar · Model: TF-IDF Vectorizer &amp; Cosine Similarity</div>
       <div class="act">
-        <div class="btn-solid" style="color:#065F46" onclick="go(2)">${ic('users','i-sm')} Buka Ranking Pelamar</div>
-        <div class="btn-ghost" onclick="go(1)">Pasang Proyek Baru</div>
+        <div class="btn-solid" style="color:#065f46" onclick="go(2)">${ic('users','i-sm')} Lihat Ranking SkillMatch</div>
+        <div class="btn-ghost" onclick="go(1)">+ Pasang Proyek Baru</div>
       </div>
     </div>
 
     <div class="m-pad">
       <div class="m-sec-h">
-        <h3>Ringkasan Aktivitas Usaha</h3>
+        <h3>Daftar Proyek Anda</h3>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px">
-        <div class="m-card" style="margin-bottom:0">
-          <div style="font-size:11px;color:var(--muted);font-weight:600">Proyek Berjalan</div>
-          <div style="font-size:22px;font-weight:800;color:var(--brand);margin-top:4px">1 Proyek</div>
-          <div style="font-size:11px;color:var(--ok);margin-top:2px">Progres 75%</div>
+
+      <!-- Project 1 -->
+      <div class="m-card" style="cursor:pointer" onclick="go(2)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <div style="font-size:13.5px;font-weight:750">Website Katalog Digital &amp; Sistem Order</div>
+          <span class="badge badge-success" style="font-size:10px;padding:2px 7px;background:#dcfce7;color:#15803d;font-weight:700">PUBLISHED</span>
         </div>
-        <div class="m-card" style="margin-bottom:0">
-          <div style="font-size:11px;color:var(--muted);font-weight:600">Talenta Terhubung</div>
-          <div style="font-size:22px;font-weight:800;color:var(--ink);margin-top:4px">2 Mahasiswa</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:2px">FST UNAIR</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px">
+          Kategori: Web Development · ⏱️ 4 Minggu · Stipend: Rp 2.000.000
+        </div>
+        <div style="margin-top:8px;padding-top:8px;border-top:1px solid var(--line-soft);display:flex;justify-content:space-between;align-items:center;font-size:11px">
+          <span style="color:#059669;font-weight:700">👥 3 Pelamar Menunggu Seleksi</span>
+          <span style="color:var(--brand);font-weight:700">Peringkat AI &rarr;</span>
         </div>
       </div>
 
-      <div class="m-sec-h" style="margin-top:16px">
-        <h3>Proyek Aktif Anda</h3>
-      </div>
-      <div class="m-card" style="cursor:pointer" onclick="go(2)">
+      <!-- Project 2 (Completed) -->
+      <div class="m-card" style="cursor:pointer" onclick="go(3)">
         <div style="display:flex;justify-content:space-between;align-items:flex-start">
-          <div style="font-size:13.5px;font-weight:750">Redesain UI/UX &amp; Katalog Digital</div>
-          <span class="pill brand">Aktif</span>
+          <div style="font-size:13.5px;font-weight:750">Dashboard Pencatatan Penjualan Harian</div>
+          <span class="badge badge-secondary" style="font-size:10px;padding:2px 7px;background:#f1f5f9;color:#475569;font-weight:700">COMPLETED</span>
         </div>
         <div style="font-size:12px;color:var(--muted);margin-top:4px">
-          3 Pelamar Masuk · Skor AI Tertinggi: <b>94%</b>
-        </div>
-        <div style="margin-top:10px">
-          <div class="bar" style="height:6px"><i style="width:75%"></i></div>
+          Talenta: Ahmad Dhafin Al Farisy · ⭐ Ulasan Bintang 5 Diberikan
         </div>
       </div>
     </div>`
   },
   {
-    name: 'Publikasi Kebutuhan Proyek',
+    name: 'Pasang Kebutuhan Proyek',
     note: {
-      tag: 'Form Mandiri UMKM',
-      h: 'Formulir Brief yang Memandu Pengusaha Awam',
+      tag: 'Penerbitan Brief Proyek',
+      h: 'Formulir Publikasi Kebutuhan Proyek UMKM',
       p: [
-        '<b>Masalah nyata:</b> Pemilik UMKM sering tidak paham istilah teknis IT untuk membuat lowongan kerja yang jelas.',
-        'Sistem menyediakan form terpandu dengan pilihan kategori masalah bisnis (misal: "Katalog Penjualan Lambat", "Pencatatan Stok Masih Buku").',
-        'Sistem otomatis memetakan kebutuhan tersebut ke dalam daftar *required skills* untuk dianalisis oleh modul NLP.'
+        '<b>Sesuai Implementasi:</b> Merefleksikan form <code>projects/create.blade.php</code>.',
+        'Kolom isian: <i>Judul Proyek</i>, <i>Kategori</i> (Web, UI/UX, Marketing, Data), <i>Durasi</i>, <i>Kompensasi Stipend</i>, <i>Deskripsi Kebutuhan</i>, dan <i>Required Skills</i>.',
+        'Data teks yang disimpan di sini adalah parameter yang langsung dibaca oleh <b>FastAPI SkillMatch Engine</b> untuk menghitung kedekatan vektor pelamar.'
       ],
-      src: 'Sesuai Kebutuhan Fungsional FR-PROJ-01 Publikasi Brief Proyek (BAB 2.3).'
+      src: 'Sesuai dengan projects/create.blade.php & ProjectController.php'
     },
     tabs: 1,
     html: `
     <div class="m-appbar">
       <div>
         <h1>Pasang Kebutuhan Proyek</h1>
-        <div class="sub">Panduan Digitalisasi untuk UMKM</div>
+        <div class="sub">Formulir Penerbitan Brief untuk Mahasiswa</div>
       </div>
     </div>
     <div class="m-pad" style="padding-top:14px">
-      <div class="field" style="border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff;margin-bottom:10px">
-        <label style="display:block;font-size:11px;font-weight:700;color:var(--muted);margin-bottom:4px">Judul Proyek Masalah Bisnis</label>
-        <div style="font-size:13px;font-weight:600;color:var(--ink)">Aplikasi Pencatatan Kasir &amp; Stok Barang Otomatis</div>
-      </div>
+      <div class="m-card">
+        <label style="display:block;font-size:11px;font-weight:700;color:var(--muted);margin-bottom:3px">Judul Kebutuhan Proyek</label>
+        <input type="text" readonly value="Pengembangan Website Katalog Digital & Sistem Order Produk UMKM" style="width:100%;border:1px solid var(--line);border-radius:8px;padding:8px;font-size:12px;color:var(--ink);margin-bottom:10px;background:#f8fafc">
 
-      <div class="field" style="border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff;margin-bottom:10px">
-        <label style="display:block;font-size:11px;font-weight:700;color:var(--muted);margin-bottom:4px">Kategori Masalah</label>
-        <div style="font-size:13px;color:var(--ink)">Aplikasi Kasir (POS) &amp; Inventori</div>
-      </div>
-
-      <div class="field" style="border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff;margin-bottom:10px">
-        <label style="display:block;font-size:11px;font-weight:700;color:var(--muted);margin-bottom:4px">Target Durasi &amp; Kompensasi</label>
-        <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:700">
-          <span>⏱️ 4 Minggu</span>
-          <span style="color:var(--brand)">${rp(2000000)}</span>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
+          <div>
+            <label style="display:block;font-size:11px;font-weight:700;color:var(--muted);margin-bottom:3px">Kategori Proyek</label>
+            <div style="border:1px solid var(--line);border-radius:8px;padding:8px;font-size:11.5px;background:#f8fafc">Web Development</div>
+          </div>
+          <div>
+            <label style="display:block;font-size:11px;font-weight:700;color:var(--muted);margin-bottom:3px">Estimasi Durasi</label>
+            <div style="border:1px solid var(--line);border-radius:8px;padding:8px;font-size:11.5px;background:#f8fafc">4 Minggu</div>
+          </div>
         </div>
-      </div>
 
-      <div class="field" style="border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff;margin-bottom:14px">
-        <label style="display:block;font-size:11px;font-weight:700;color:var(--muted);margin-bottom:4px">Keterampilan yang Diharapkan (Auto Tags)</label>
-        <div class="skill-tags">
-          <span class="skill-pill match">Laravel / Web</span>
-          <span class="skill-pill match">Desain Kasir Sederhana</span>
-          <span class="skill-pill match">Cetak Struk Bluetooth</span>
-        </div>
-      </div>
+        <label style="display:block;font-size:11px;font-weight:700;color:var(--muted);margin-bottom:3px">Kompensasi Stipend</label>
+        <input type="text" readonly value="Rp 2.000.000" style="width:100%;border:1px solid var(--line);border-radius:8px;padding:8px;font-size:12px;color:#059669;font-weight:750;margin-bottom:10px;background:#f8fafc">
 
-      <button class="btn" style="background:var(--brand);color:#fff;border-radius:14px;padding:14px;font-weight:750;width:100%" onclick="go(2)">
-        Terbitkan &amp; Cari Talenta via NLP
-      </button>
+        <label style="display:block;font-size:11px;font-weight:700;color:var(--muted);margin-bottom:3px">Keahlian Teknis Wajib (Required Skills)</label>
+        <input type="text" readonly value="Laravel, Blade, PHP, PostgreSQL, HTML/CSS" style="width:100%;border:1px solid var(--line);border-radius:8px;padding:8px;font-size:12px;color:var(--ink);margin-bottom:12px;background:#f8fafc">
+
+        <button class="btn" style="background:var(--brand);color:#fff;border-radius:10px;padding:12px;font-weight:750;width:100%" onclick="go(2)">
+          Publikasikan Brief Proyek
+        </button>
+      </div>
     </div>`
   },
   {
     name: 'Ranking Pelamar (SkillMatch)',
     note: {
-      tag: 'Pengambilan Keputusan Cerdas',
-      h: 'Pemeringkatan Objektif Calon Pelaksana',
+      tag: 'Seleksi Kandidat · NLP Decision Support',
+      h: 'Pemeringkatan Pelamar: TF-IDF & Cosine Similarity',
       p: [
-        '<b>Memangkas waktu kurasi:</b> UMKM tidak perlu membaca tumpukan berkas CV satu per satu.',
-        'Algoritma NLP menyusun kandidat dari persentase skor kecocokan tertinggi. UMKM dapat melihat bukti portofolio dan rekomendasi kampus.',
-        'Satu tombol **"Terima &amp; Inisiasi Workspace"** langsung mengaktifkan ruang kolaborasi resmi.'
+        '<b>Sesuai Implementasi:</b> Merefleksikan tampilan <code>projects/candidates.blade.php</code>.',
+        'Menyajikan hasil pemeringkatan 3 pelamar nyata di database:',
+        '• <b>#1 Rekomendasi Utama:</b> <code>Ahmad Dhafin Al Farisy</code> (92.5% Cocok · S1 Sistem Informasi UNAIR)',
+        '• <b>#2:</b> <code>Citra Lestari</code> (54.0% Cocok · UI/UX Designer)',
+        '• <b>#3:</b> <code>Budi Pratama</code> (28.5% Cocok · Digital Marketing)',
+        'Aksi UMKM: Klik <b>Terima Kandidat</b> untuk menginisiasi workspace kolaboratif secara otomatis.'
       ],
-      src: 'Sesuai Skenario Use Case Pemrosesan SkillMatch & Pemeringkatan (Tabel 4.3).'
+      src: 'Sesuai dengan projects/candidates.blade.php & ApplicationController.php'
     },
     tabs: 2,
     html: `
     <div class="m-appbar">
       <div>
-        <h1>Ranking Pelamar (NLP Engine)</h1>
-        <div class="sub">3 Talenta Terpilih untuk Brief Anda</div>
+        <h1>Ranking Pelamar (SkillMatch)</h1>
+        <div class="sub">Proyek: Website Katalog Digital UMKM</div>
       </div>
+      <span class="pill ok" style="margin-left:auto">3 Pelamar</span>
     </div>
     <div class="m-pad" style="padding-top:14px">
-      <!-- Candidate 1 (Top Rank) -->
-      <div class="m-card" style="border:1.5px solid var(--brand);box-shadow:0 4px 12px rgba(37,99,235,.12)">
+      <!-- Candidate 1: Top Rank -->
+      <div class="m-card" style="border-left:5px solid #10b981;position:relative">
+        <span style="position:absolute;top:-8px;right:12px;background:linear-gradient(135deg,#4f46e5,#0ea5e9);color:#fff;font-size:9.5px;font-weight:800;padding:2px 8px;border-radius:99px">
+          ⭐ Rekomendasi Utama (#1)
+        </span>
         <div style="display:flex;justify-content:space-between;align-items:flex-start">
           <div style="display:flex;align-items:center;gap:10px">
-            <div style="width:40px;height:40px;border-radius:12px;background:var(--brand-soft);color:var(--brand-deep);display:flex;align-items:center;justify-content:center;font-weight:800">
-              AD
+            <div style="width:38px;height:38px;border-radius:50%;background:#ecfdf5;color:#10b981;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;border:2px solid #10b981">
+              #1
             </div>
             <div>
-              <div style="font-size:13.5px;font-weight:800">Ahmad Dhafin</div>
-              <div style="font-size:11px;color:var(--muted)">S1 Sistem Informasi UNAIR · IPK 3.89</div>
+              <div style="font-size:13.5px;font-weight:800;color:var(--ink)">Ahmad Dhafin Al Farisy</div>
+              <div style="font-size:11px;color:var(--muted)">Universitas Airlangga · S1 Sistem Informasi</div>
             </div>
           </div>
-          <span class="match-score high">🥇 94% MATCH</span>
         </div>
 
-        <div class="skill-tags" style="margin-top:10px">
-          <span class="skill-pill match">Figma UI/UX</span>
-          <span class="skill-pill match">Tailwind CSS</span>
-          <span class="skill-pill match">User Research</span>
+        <!-- Progress Bar Match -->
+        <div style="margin:10px 0 6px">
+          <div style="display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+            <span style="color:#10b981">Kesesuaian SkillMatch</span>
+            <span>92.5% Cocok</span>
+          </div>
+          <div class="bar" style="height:7px;margin-top:3px"><i style="width:92.5%;background:#10b981"></i></div>
         </div>
 
-        <div style="margin-top:12px;display:flex;gap:8px">
-          <button class="btn sm" style="background:var(--ok);color:#fff;flex:1;border-radius:10px" onclick="go(3)">
-            Terima &amp; Buat Ruang Kerja
+        <!-- Pitch snippet -->
+        <div style="background:#f8fafc;border-left:3px solid var(--line);padding:6px 8px;font-size:11px;color:#475569;font-style:italic;margin-bottom:8px">
+          "Saya berpengalaman membangun aplikasi Laravel 11 dengan performa tinggi dan tata letak Blade responsif..."
+        </div>
+
+        <div class="skill-tags">
+          <span class="skill-pill match">Laravel</span>
+          <span class="skill-pill match">Blade</span>
+          <span class="skill-pill match">PHP</span>
+          <span class="skill-pill match">PostgreSQL</span>
+        </div>
+
+        <div style="display:flex;gap:6px;margin-top:10px">
+          <button class="btn sm" style="background:#16a34a;color:#fff;flex:1;border-radius:8px" onclick="go(3)">
+            ✓ Terima &amp; Inisiasi Workspace
           </button>
-          <button class="btn sm ghost" style="flex:none;padding:0 12px;border-radius:10px">CV</button>
+          <button class="btn sm ghost" style="flex:none;padding:0 10px;border-radius:8px;color:#dc2626">Tolak</button>
         </div>
       </div>
 
-      <!-- Candidate 2 -->
-      <div class="m-card">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start">
-          <div style="display:flex;align-items:center;gap:10px">
-            <div style="width:40px;height:40px;border-radius:12px;background:#F1F5F9;color:var(--ink);display:flex;align-items:center;justify-content:center;font-weight:800">
-              NP
-            </div>
-            <div>
-              <div style="font-size:13.5px;font-weight:800">Nabila Putri</div>
-              <div style="font-size:11px;color:var(--muted)">S1 DKV UNAIR · IPK 3.75</div>
-            </div>
+      <!-- Candidate 2: Citra Lestari -->
+      <div class="m-card" style="border-left:5px solid #3b82f6">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:36px;height:36px;border-radius:50%;background:#eff6ff;color:#3b82f6;display:flex;align-items:center;justify-content:center;font-weight:800;border:2px solid #3b82f6">
+            #2
           </div>
-          <span class="match-score med">🥈 82% MATCH</span>
+          <div>
+            <div style="font-size:13px;font-weight:800">Citra Lestari</div>
+            <div style="font-size:11px;color:var(--muted)">UNAIR · UI/UX Designer · Skor Portofolio: 320</div>
+          </div>
         </div>
-        <div class="skill-tags" style="margin-top:10px">
-          <span class="skill-pill match">Branding Tas</span>
-          <span class="skill-pill match">Ilustrasi</span>
-          <span class="skill-pill missing">HTML/CSS</span>
+        <div style="margin:8px 0 4px">
+          <div style="display:flex;justify-content:space-between;font-size:11px;font-weight:700">
+            <span style="color:#3b82f6">Kesesuaian SkillMatch</span>
+            <span>54.0% Cocok</span>
+          </div>
+          <div class="bar" style="height:6px;margin-top:3px"><i style="width:54%;background:#3b82f6"></i></div>
+        </div>
+      </div>
+
+      <!-- Candidate 3: Budi Pratama -->
+      <div class="m-card" style="border-left:5px solid #f59e0b">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:36px;height:36px;border-radius:50%;background:#fffbeb;color:#f59e0b;display:flex;align-items:center;justify-content:center;font-weight:800;border:2px solid #f59e0b">
+            #3
+          </div>
+          <div>
+            <div style="font-size:13px;font-weight:800">Budi Pratama</div>
+            <div style="font-size:11px;color:var(--muted)">UNAIR · Manajemen Bisnis · Skor: 210</div>
+          </div>
+        </div>
+        <div style="margin:8px 0 4px">
+          <div style="display:flex;justify-content:space-between;align-size:11px;font-weight:700">
+            <span style="color:#f59e0b">Kesesuaian SkillMatch</span>
+            <span>28.5% Cocok</span>
+          </div>
+          <div class="bar" style="height:6px;margin-top:3px"><i style="width:28.5%;background:#f59e0b"></i></div>
         </div>
       </div>
     </div>`
@@ -607,223 +654,246 @@ const UMKM_SCREENS = [
   {
     name: 'Evaluasi & Ulasan Dua Arah',
     note: {
-      tag: 'Penutupan Proyek & Reputasi',
-      h: 'Ulasan Resmi Pengusaha untuk Portofolio Mahasiswa',
+      tag: 'Penyelesaian Proyek & Review',
+      h: 'Persetujuan Luaran & Penilaian Portofolio Mahasiswa',
       p: [
-        '<b>Selesai dengan tuntas:</b> UMKM meninjau hasil penyerahan akhir, memberikan bintang penilaian (1–5), dan menulis testimoni resmi.',
-        'Ulasan ini otomatis menjadi bukti portofolio mahasiswa dan menjadi syarat pencairan stipend serta validasi konversi SKS oleh dosen.'
+        '<b>Sesuai Implementasi:</b> Merefleksikan aksi penyelesaian pada <code>workspaces/show.blade.php</code> dan <code>ReviewController.php</code>.',
+        'UMKM meninjau tautan deliverables hasil kerja mahasiswa, menekan tombol <b>Selesaikan Proyek</b>, dan mengisi ulasan bintang (1-5) beserta testimoni evaluasi.',
+        'Ulasan ini yang otomatis menambah nilai <i>portfolio_score</i> mahasiswa di database.'
       ],
-      src: 'Sesuai Kebutuhan Fungsional FR-REV-01 Two-Way Review (BAB 2.3).'
+      src: 'Sesuai dengan ReviewController.php & FR-REV-01'
     },
     tabs: 3,
     html: `
     <div class="m-appbar">
       <div>
-        <h1>Evaluasi Akhir &amp; Ulasan</h1>
-        <div class="sub">Tinjau Hasil Kerja Mahasiswa</div>
+        <h1>Evaluasi Luaran &amp; Ulasan</h1>
+        <div class="sub">Tinjau Deliverables Mahasiswa</div>
       </div>
     </div>
     <div class="m-pad" style="padding-top:14px">
       <div class="m-card">
-        <div style="font-size:13px;font-weight:750">Hasil Penyerahan (Deliverables):</div>
-        <div style="background:#F1F5F9;border-radius:10px;padding:10px;margin-top:8px;font-size:12px">
-          🔗 <b>Figma Link:</b> figma.com/file/tanggulangin-redesign-v2<br>
-          📁 <b>Aset Desain:</b> 42 File Gambar Siap Upload Katalog
+        <div style="font-size:12.5px;font-weight:750">Hasil Penyerahan Akhir (Deliverables):</div>
+        <div style="background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin-top:6px;font-size:11.5px">
+          🔗 <b>Source Code GitHub:</b> github.com/dhafinn/katalog-umkm-v1<br>
+          📁 <b>Panduan Konfigurasi:</b> README_SETUP.pdf terlampir
         </div>
       </div>
 
       <div class="m-card">
-        <div style="font-size:13px;font-weight:750;margin-bottom:8px">Beri Penilaian Kerja:</div>
-        <div style="display:flex;gap:6px;color:#F59E0B;font-size:24px;margin-bottom:12px">
-          ⭐ ⭐ ⭐ ⭐ ⭐
+        <div style="font-size:12.5px;font-weight:750;margin-bottom:6px">Beri Penilaian Kerja Mahasiswa:</div>
+        <div style="display:flex;gap:4px;color:#f59e0b;font-size:22px;margin-bottom:10px">
+          ⭐ ⭐ ⭐ ⭐ ⭐ (5.0 / 5.0)
         </div>
-        <div class="field" style="border:1px solid var(--line);border-radius:12px;padding:10px;background:#fff">
-          <label style="font-size:11px;color:var(--muted);font-weight:700">Testimoni untuk Mahasiswa:</label>
-          <div style="font-size:12.5px;color:var(--ink);margin-top:4px">
-            Hasil pengerjaan sangat rapi dan selesai tepat waktu. Katalog baru memudahkan kami melayani pesanan via WhatsApp!
-          </div>
-        </div>
+        <label style="font-size:11px;color:var(--muted);font-weight:700">Komentar &amp; Ulasan Evaluasi:</label>
+        <textarea readonly style="width:100%;border:1px solid var(--line);border-radius:8px;padding:8px;font:inherit;font-size:11.5px;color:var(--ink);resize:none;height:60px;background:#fff;margin-top:4px">Hasil implementasi katalog website sangat rapi, fitur order WhatsApp berfungsi lancar, dan selesai lebih cepat dari tenggat waktu!</textarea>
       </div>
 
-      <button class="btn" style="background:var(--ok);color:#fff;border-radius:14px;padding:14px;font-weight:750;width:100%" onclick="go(0)">
-        Setujui &amp; Terbitkan Sertifikat
+      <button class="btn" style="background:#16a34a;color:#fff;border-radius:10px;padding:12px;font-weight:750;width:100%" onclick="go(0)">
+        ✓ Selesaikan Proyek &amp; Simpan Ulasan
       </button>
     </div>`
   }
 ];
 
 /* ══════════════════════════════════════════════════════════════════════════════
-   ROLE 3: DOSEN PEMBIMBING / EVALUATOR AKADEMIK
+   ROLE 3: ADMINISTRATOR TATA KELOLA (Admin SkillBridge Hub)
    ══════════════════════════════════════════════════════════════════════════════ */
-const FACULTY_SCREENS = [
+const ADMIN_SCREENS = [
   {
-    name: 'Beranda Pembimbing',
+    name: 'Dasbor Tata Kelola',
     note: {
-      tag: 'Akademik · Pengawasan MBKM',
-      h: 'Monitoring Ketercapaian Kompetensi Industri',
+      tag: 'Administrator · Governance',
+      h: 'Dasbor Tata Kelola Platform & Metrik Riil',
       p: [
-        '<b>Tanggung jawab dosen:</b> Memastikan mahasiswa tidak sekadar bekerja buruh lepas, namun benar-benar menerapkan ilmu perkuliahan.',
-        'Dosen dapat melihat status logbook, jam kerja kumulatif (standar 160 jam untuk 4 SKS), dan memberikan catatan bimbingan berkala.',
-        'Data ini menjadi bukti pelaporan IKU 2 perguruan tinggi.'
+        '<b>Sesuai Implementasi:</b> Merefleksikan tampilan <code>admin/dashboard.blade.php</code>.',
+        'Menyajikan 4 kartu metrik utama di database:',
+        '• <b>Total Pengguna:</b> 5 (3 Mahasiswa, 2 Mitra UMKM)',
+        '• <b>Total Proyek:</b> 3 (1 Terbuka, 1 Aktif, 1 Tuntas)',
+        '• <b>Workspace Aktif:</b> 1 Berjalan',
+        '• <b>Proyek Tuntas:</b> 1 Tuntas & Diulas'
       ],
-      src: 'Sesuai Matriks Analisis Stakeholder SH-04 Dosen Evaluator (Tabel 2.1).'
+      src: 'Sesuai dengan admin/dashboard.blade.php & AdminController.php'
     },
     tabs: 0,
     html: `
     <div class="hero">
       <div class="fg">
-        <div class="greet">Dosen Pembimbing Akademik</div>
-        <div class="name">Dr. Ir. Bambang Hermanto</div>
+        <div class="greet">Platform Governance Center</div>
+        <div class="name">Admin SkillBridge Hub</div>
         <div class="sub-meta">
-          <span>Koordinator Magang &amp; Kolaborasi</span>
-          <span class="badge">FST UNAIR</span>
+          <span>Pengawas &amp; Administrator Sistem</span>
+          <span class="badge" style="background:#fef3c7;color:#92400e">Role: ADMIN</span>
         </div>
       </div>
     </div>
 
     <div class="focus-card purple">
       <div class="head">
-        <span>LOGBOOK MENUNGGU</span>
-        <span class="pill gold" style="background:rgba(255,255,255,.25);color:#fff">4 Pengajuan</span>
+        <span>STATUS TATA KELOLA</span>
+        <span class="pill ok" style="background:rgba(255,255,255,.25);color:#fff">Sistem Normal</span>
       </div>
-      <div class="title">Verifikasi Aktivitas Industri</div>
-      <div class="desc">Ahmad Dhafin &amp; 3 Mahasiswa Lainnya</div>
+      <div class="title">Pusat Moderasi &amp; Pengawasan</div>
+      <div class="desc">Monitoring ekosistem kolaborasi akademik dan kepatuhan brief UMKM.</div>
       <div class="act">
-        <div class="btn-solid" style="color:#5B21B6" onclick="go(1)">${ic('checkCircle','i-sm')} Periksa Logbook</div>
-        <div class="btn-ghost" onclick="go(2)">Ekuivalensi SKS</div>
+        <div class="btn-solid" style="color:#5b21b6" onclick="go(1)">${ic('shield','i-sm')} Moderasi Proyek Publik</div>
+        <div class="btn-ghost" onclick="go(2)">Master Kategori</div>
       </div>
     </div>
 
     <div class="m-pad">
+      <!-- 4 Stats Cards from admin/dashboard.blade.php -->
       <div class="m-sec-h">
-        <h3>Mahasiswa Bimbingan Aktif (MBKM)</h3>
+        <h3>Statistik Ekosistem Platform</h3>
       </div>
-      <div class="m-card" style="cursor:pointer" onclick="go(1)">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start">
-          <div>
-            <div style="font-size:13.5px;font-weight:800">Ahmad Dhafin Al Farisy</div>
-            <div style="font-size:11.5px;color:var(--muted)">CV Tanggulangin Leather · UI/UX Designer</div>
-          </div>
-          <span class="pill ok">128 / 160 Jam</span>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div class="m-card" style="margin-bottom:0">
+          <div style="font-size:11px;color:var(--muted);font-weight:700">TOTAL PENGGUNA</div>
+          <div style="font-size:22px;font-weight:800;color:var(--ink);margin-top:2px">5 Akun</div>
+          <div style="font-size:10.5px;color:var(--muted)">3 Mahasiswa · 2 UMKM</div>
         </div>
-        <div style="margin-top:8px">
-          <div class="bar" style="height:6px"><i style="width:80%"></i></div>
+        <div class="m-card" style="margin-bottom:0">
+          <div style="font-size:11px;color:var(--muted);font-weight:700">TOTAL PROYEK</div>
+          <div style="font-size:22px;font-weight:800;color:#4f46e5;margin-top:2px">3 Proyek</div>
+          <div style="font-size:10.5px;color:var(--muted)">Semua brief terdaftar</div>
         </div>
-        <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted);margin-top:8px">
-          <span>Target: 3 SKS (RPL &amp; IMK)</span>
-          <span style="font-weight:700;color:var(--brand)">Logbook Minggu ke-3 Masuk</span>
+        <div class="m-card" style="margin-bottom:0">
+          <div style="font-size:11px;color:var(--muted);font-weight:700">WORKSPACE AKTIF</div>
+          <div style="font-size:22px;font-weight:800;color:#0284c7;margin-top:2px">1 Berjalan</div>
+          <div style="font-size:10.5px;color:var(--muted)">Sedang kolaborasi</div>
+        </div>
+        <div class="m-card" style="margin-bottom:0">
+          <div style="font-size:11px;color:var(--muted);font-weight:700">PROYEK TUNTAS</div>
+          <div style="font-size:22px;font-weight:800;color:#16a34a;margin-top:2px">1 Selesai</div>
+          <div style="font-size:10.5px;color:var(--muted)">Terselesaikan &amp; diulas</div>
         </div>
       </div>
     </div>`
   },
   {
-    name: 'Asistensi & Logbook',
+    name: 'Moderasi Proyek Publik',
     note: {
-      tag: 'Pengendalian Mutu Pembelajaran',
-      h: 'Validasi Catatan Kerja Mingguan & Bukti Riil',
+      tag: 'Moderasi & Kontrol Kualitas',
+      h: 'Tabel Moderasi Status Proyek Publik',
       p: [
-        '<b>Transparansi bukti kerja:</b> Mahasiswa wajib mengisi ringkasan kegiatan mingguan dan mengunggah foto saat berdiskusi dengan pemilik UMKM.',
-        'Dosen memberikan persetujuan atau catatan perbaikan langsung di aplikasi, menghemat waktu temu bimbingan konvensional.'
+        '<b>Sesuai Implementasi:</b> Merefleksikan tabel moderasi pada <code>admin/dashboard.blade.php</code>.',
+        'Admin memiliki kewenangan mengaktifkan (*PUBLISHED*) atau menonaktifkan (*DRAFT/OFF*) brief proyek publik.',
+        'Mencegah brief yang melanggar ketentuan etika atau tidak memiliki cakupan kerja yang wajar bagi mahasiswa.'
       ],
-      src: 'Sesuai Kebutuhan Non-Fungsional Keandalan Audit Akademik (Tabel 2.4).'
+      src: 'Sesuai dengan AdminController.php::toggleProjectStatus'
     },
     tabs: 1,
     html: `
     <div class="m-appbar">
       <div>
-        <h1>Pemeriksaan Logbook Mingguan</h1>
-        <div class="sub">Ahmad Dhafin · Minggu ke-3</div>
+        <h1>Moderasi Proyek Publik</h1>
+        <div class="sub">Kontrol Status Publikasi Brief UMKM</div>
       </div>
     </div>
     <div class="m-pad" style="padding-top:14px">
+      <!-- Proyek 1 -->
       <div class="m-card">
-        <div style="font-size:12px;font-weight:700;color:var(--brand)">Aktivitas 15–20 September 2026 (36 Jam Kerja)</div>
-        <div style="font-size:13px;color:var(--body);line-height:1.5;margin-top:6px">
-          • Melakukan usability testing wireframe dengan 5 pembeli produk kulit Tanggulangin.<br>
-          • Memperbaiki alur checkout katalog online agar lebih ringkas.<br>
-          • Diskusi persetujuan warna dan font brand bersama pemilik UMKM (H. Mochammad).
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <div>
+            <span style="font-size:10.5px;font-weight:700;color:var(--muted)">#1 · Web Development</span>
+            <div style="font-size:13px;font-weight:800;color:var(--ink);margin-top:2px">Website Katalog Digital UMKM</div>
+            <div style="font-size:11px;color:var(--muted)">Pemilik: Hendra Setiawan (CV Kreasi Digital)</div>
+          </div>
+          <span class="badge badge-success" style="font-size:10px;padding:2px 6px;background:#dcfce7;color:#15803d;font-weight:700">PUBLISHED</span>
         </div>
-        <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ok);font-weight:700;margin-top:10px">
-          ${ic('checkCircle','i-xs')} Telah diparaf pihak UMKM (H. Mochammad)
+        <div style="display:flex;justify-content:flex-end;margin-top:8px">
+          <button class="pill brand" style="font-size:10.5px;background:#fee2e2;color:#dc2626">Nonaktifkan</button>
         </div>
       </div>
 
+      <!-- Proyek 2 -->
       <div class="m-card">
-        <div style="font-size:12.5px;font-weight:750">Catatan &amp; Arahan Dosen:</div>
-        <div class="field" style="border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff;margin-top:6px">
-          <textarea style="width:100%;border:0;outline:0;font:inherit;font-size:12px;color:var(--ink);resize:none;height:50px" placeholder="Beri catatan bimbingan...">Bagus, pastikan dokumentasi hasil usability testing dilampirkan dalam bab evaluasi laporan akhir.</textarea>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <div>
+            <span style="font-size:10.5px;font-weight:700;color:var(--muted)">#2 · UI/UX &amp; Graphic Design</span>
+            <div style="font-size:13px;font-weight:800;color:var(--ink);margin-top:2px">Redesain UI/UX Kopi Kenangan Rasa</div>
+            <div style="font-size:11px;color:var(--muted)">Pemilik: Sari Wahyuni (Kedai Kopi Kenangan)</div>
+          </div>
+          <span class="badge badge-primary" style="font-size:10px;padding:2px 6px;background:#e0e7ff;color:#4338ca;font-weight:700">ACTIVE</span>
         </div>
       </div>
 
-      <button class="btn" style="background:var(--brand);color:#fff;border-radius:14px;padding:14px;font-weight:750;width:100%" onclick="go(2)">
-        Sahkan Logbook &amp; Lanjutkan ke Ekuivalensi
-      </button>
+      <!-- Proyek 3 -->
+      <div class="m-card">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <div>
+            <span style="font-size:10.5px;font-weight:700;color:var(--muted)">#3 · Web Development</span>
+            <div style="font-size:13px;font-weight:800;color:var(--ink);margin-top:2px">Dashboard Pencatatan Penjualan</div>
+            <div style="font-size:11px;color:var(--muted)">Pemilik: Hendra Setiawan</div>
+          </div>
+          <span class="badge badge-secondary" style="font-size:10px;padding:2px 6px;background:#f1f5f9;color:#475569;font-weight:700">COMPLETED</span>
+        </div>
+      </div>
     </div>`
   },
   {
-    name: 'Validasi Konversi SKS',
+    name: 'Kategori & Audit Log',
     note: {
-      tag: 'Ekuivalensi MBKM Resmi',
-      h: 'Penetapan Nilai & Konversi Matakuliah',
+      tag: 'Master Data & Keamanan',
+      h: 'Master Kategori Proyek & Catatan Audit Log',
       p: [
-        '<b>Ujung tombak program kampus:</b> Proyek kolaborasi industri ini langsung dikonversi ke matakuliah kurikulum resmi program studi.',
-        'Dosen menetapkan konversi SKS (misal: *Proyek Rekayasa Perangkat Lunak 4 SKS* dan *Interaksi Manusia Komputer 3 SKS*) dengan tanda tangan digital resmi.'
+        '<b>Sesuai Implementasi:</b> Merefleksikan tabel <code>categories</code> dan <code>audit_logs</code> di database PostgreSQL.',
+        '4 Kategori resmi: <i>Web Development</i>, <i>UI/UX & Graphic Design</i>, <i>Digital Marketing & Branding</i>, dan <i>Data & AI Solutions</i>.',
+        'Audit log mencatat setiap perubahan administratif, verifikasi proyek, dan pembukaan workspace untuk kepatuhan keamanan sistem.'
       ],
-      src: 'Sesuai Pedoman Implementasi MBKM dan Perencanaan Rute Akademik (BAB 3.6).'
+      src: 'Sesuai dengan Category model & AuditLog model'
     },
     tabs: 2,
     html: `
     <div class="m-appbar">
       <div>
-        <h1>Penetapan Konversi Matakuliah</h1>
-        <div class="sub">Ekuivalensi SKS Program Studi</div>
+        <h1>Master Kategori &amp; Audit Log</h1>
+        <div class="sub">Integritas Data &amp; Keamanan Platform</div>
       </div>
     </div>
     <div class="m-pad" style="padding-top:14px">
       <div class="m-card">
-        <div style="font-size:13px;font-weight:800;color:var(--ink);margin-bottom:10px">Rekomendasi Konversi Matakuliah:</div>
-
-        <div style="padding:10px 0;border-bottom:1px solid var(--line-soft);display:flex;justify-content:space-between;align-items:center">
-          <div>
-            <div style="font-size:13px;font-weight:700">Proyek Rekayasa Perangkat Lunak</div>
-            <div style="font-size:11px;color:var(--muted)">Kode: SI301 · Semester 5</div>
+        <div style="font-size:12.5px;font-weight:750;margin-bottom:8px">Kategori Proyek Terdaftar:</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--line-soft)">
+            <span style="font-size:12px;font-weight:600">Web Development</span>
+            <span class="pill brand" style="font-size:10px">Slug: web-development</span>
           </div>
-          <span class="pill ok">4 SKS (Nilai A)</span>
-        </div>
-
-        <div style="padding:10px 0;display:flex;justify-content:space-between;align-items:center">
-          <div>
-            <div style="font-size:13px;font-weight:700">Interaksi Manusia dan Komputer</div>
-            <div style="font-size:11px;color:var(--muted)">Kode: SI204 · Semester 4</div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--line-soft)">
+            <span style="font-size:12px;font-weight:600">UI/UX &amp; Graphic Design</span>
+            <span class="pill brand" style="font-size:10px">Slug: ui-ux-design</span>
           </div>
-          <span class="pill ok">3 SKS (Nilai A)</span>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--line-soft)">
+            <span style="font-size:12px;font-weight:600">Digital Marketing &amp; Branding</span>
+            <span class="pill brand" style="font-size:10px">Slug: digital-marketing</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0">
+            <span style="font-size:12px;font-weight:600">Data &amp; AI Solutions</span>
+            <span class="pill brand" style="font-size:10px">Slug: data-ai-solutions</span>
+          </div>
         </div>
       </div>
 
-      <div class="m-card" style="text-align:center;background:#F8FAFC">
-        <div style="font-size:12px;color:var(--muted)">Tanda Tangan Digital Pejabat Akademik:</div>
-        <div style="font-size:14px;font-weight:800;color:var(--brand-ink);margin-top:4px">Dr. Ir. Bambang Hermanto, M.Kom</div>
-        <div style="font-size:11px;color:var(--muted)">NIP. 197804122005011002 · Koordinator MBKM FST</div>
-        <div style="display:inline-flex;align-items:center;gap:4px;color:var(--ok);font-size:11px;font-weight:700;margin-top:6px">
-          ${ic('checkCircle','i-xs')} Terverifikasi Sistem Informasi Akademik (CyberCampus)
+      <div class="m-card">
+        <div style="font-size:12.5px;font-weight:750;margin-bottom:6px">Audit Log Aktivitas Terakhir:</div>
+        <div style="font-size:11px;color:var(--body);line-height:1.6">
+          • [09:15] <code>AUTH</code>: Login berhasil - Ahmad Dhafin Al Farisy<br>
+          • [08:42] <code>WORKSPACE</code>: Pembaruan tugas checklist - Kopi Kenangan<br>
+          • [Yesterday] <code>APPLICATION</code>: Lamaran diserahkan ke Proyek #1
         </div>
       </div>
-
-      <button class="btn" style="background:var(--ok);color:#fff;border-radius:14px;padding:14px;font-weight:750;width:100%" onclick="go(0)">
-        Sahkan Berita Acara Nilai Akhir
-      </button>
     </div>`
   }
 ];
 
 /* ══════════════════════════════════════════════════════════════════════════════
-   TAB BARS & ROLE MAPPINGS
+   ROLE MAPPINGS & CONTROLLER
    ══════════════════════════════════════════════════════════════════════════════ */
 const ROLE_TABS = {
   student: [
     ['home', 'Beranda'],
-    ['briefcase', 'Proyek'],
-    ['check', 'Workspace'],
+    ['briefcase', 'Katalog'],
+    ['check', 'Ruang Kerja'],
     ['shield', 'Portofolio']
   ],
   umkm: [
@@ -832,17 +902,17 @@ const ROLE_TABS = {
     ['users', 'Pelamar'],
     ['star', 'Ulasan']
   ],
-  faculty: [
-    ['home', 'Beranda'],
-    ['doc', 'Logbook'],
-    ['grad', 'Ekuivalensi']
+  admin: [
+    ['home', 'Dasbor'],
+    ['shield', 'Moderasi'],
+    ['doc', 'Kategori']
   ]
 };
 
 const ROLE_SCREENS = {
   student: STUDENT_SCREENS,
   umkm: UMKM_SCREENS,
-  faculty: FACULTY_SCREENS
+  admin: ADMIN_SCREENS
 };
 
 let S = {
@@ -858,14 +928,14 @@ function surface(s) {
   document.getElementById('surface-w').classList.toggle('hide', s !== 'w');
   document.getElementById('sf-m').classList.toggle('on', s === 'm');
   document.getElementById('sf-w').classList.toggle('on', s === 'w');
-  document.getElementById('chrome-note').textContent = s === 'm' ? 'konsep antarmuka mobile' : 'konsep dashboard web kampus & industri';
+  document.getElementById('chrome-note').textContent = s === 'm' ? 'simulasi mobile app' : 'dasbor web platform';
   if (s === 'w') renderWeb();
 }
 
 function pickRole(r) {
   S.role = r;
   S.screen = 0;
-  ['student', 'umkm', 'faculty'].forEach(x => {
+  ['student', 'umkm', 'admin'].forEach(x => {
     const el = document.getElementById('role-' + x);
     if (el) el.classList.toggle('on', x === r);
   });
@@ -925,8 +995,8 @@ function renderMobile() {
   const mnote = document.getElementById('mnote');
   if (mnote && sc.note) {
     mnote.innerHTML = `
-      <span class="stakeholder-tag">${sc.note.tag || 'Pitching Value'}</span>
-      <h5>${ic('spark','i-xs')} Nilai Strategis Stakeholder</h5>
+      <span class="stakeholder-tag">${sc.note.tag || 'Fitur Sistem'}</span>
+      <h5>${ic('spark','i-xs')} Implementasi Nyata SkillBridge</h5>
       <h3>${sc.note.h}</h3>
       ${sc.note.p.map(p => `<p>${p}</p>`).join('')}
       <div class="src">${sc.note.src || ''}</div>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SkillBridge Hub — Prototipe Antarmuka Pitching Stakeholder</title>
+  <title>SkillBridge Hub — Prototipe Antarmuka Berbasis NLP SkillMatch Engine</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -25,7 +25,7 @@
   <div class="mark">
     <img src="assets/logo.svg" alt="SkillBridge Logo">
     <span>SkillBridge<span style="opacity:.6">.hub</span></span>
-    <span class="tag">Prototipe Pitching</span>
+    <span class="tag">Prototipe Sistem</span>
   </div>
 
   <div class="seg">
@@ -35,15 +35,15 @@
     </button>
     <button id="sf-w" onclick="surface('w')">
       <svg class="i i-sm" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 20.5h8M12 17.5v3"/></svg>
-      Dashboard Kampus &amp; Industri
+      Dashboard Web Platform
     </button>
   </div>
 
   <div class="right">
-    <span>FST Universitas Airlangga × UMKM Jawa Timur · <b id="chrome-note">konsep antarmuka mobile</b></span>
+    <span>Aplikasi Kolaborasi Proyek Akademik &amp; UMKM · <b id="chrome-note">simulasi mobile app</b></span>
     <span class="pitch-badge">
       <svg class="i i-xs" viewBox="0 0 24 24" style="stroke-width:2.4"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-      Stakeholder Pitch
+      NLP SkillMatch v1.0
     </span>
   </div>
 </div>
@@ -54,7 +54,7 @@
   <!-- ══════════════ PANGGUNG APLIKASI MOBILE ══════════════ -->
   <div class="mstage" id="surface-m">
     <div class="roles">
-      <h4>Pilih Peran Stakeholder</h4>
+      <h4>Pilih Peran Pengguna</h4>
 
       <button class="role on" id="role-student" onclick="pickRole('student')">
         <span class="ri">
@@ -62,7 +62,7 @@
         </span>
         <span>
           <b>Mahasiswa (Talenta)</b>
-          <small>Cari proyek AI Match, logbook, &amp; portofolio</small>
+          <small>Ahmad Dhafin · Skor: 450</small>
         </span>
       </button>
 
@@ -71,18 +71,18 @@
           <svg class="i i-sm" viewBox="0 0 24 24"><path d="M4 21V5.5L12 3l8 2.5V21"/><path d="M2.5 21h19M9 9h.01M15 9h.01M9 13h.01M15 13h.01M10 21v-4h4v4"/></svg>
         </span>
         <span>
-          <b>Mitra UMKM / Industri</b>
-          <small>Pasang brief, kurasi pelamar, ulas hasil</small>
+          <b>Mitra UMKM</b>
+          <small>Hendra Setiawan · CV Kreasi</small>
         </span>
       </button>
 
-      <button class="role" id="role-faculty" onclick="pickRole('faculty')">
+      <button class="role" id="role-admin" onclick="pickRole('admin')">
         <span class="ri">
           <svg class="i i-sm" viewBox="0 0 24 24"><path d="M12 3l7.5 3.5v5c0 4.3-3.1 8.2-7.5 9.5-4.4-1.3-7.5-5.2-7.5-9.5v-5z"/><path d="M9.3 12l1.9 1.9 3.6-3.8"/></svg>
         </span>
         <span>
-          <b>Dosen Pembimbing</b>
-          <small>Validasi logbook &amp; ekuivalensi SKS</small>
+          <b>Administrator</b>
+          <small>Admin Governance Center</small>
         </span>
       </button>
 
@@ -91,11 +91,11 @@
       <!-- Wallpaper Hero Switcher -->
       <div class="wpsw">
         <h4>Tema Visual Hero</h4>
-        <div class="hint">Eksplorasi tema visual antarmuka saat presentasi ke stakeholder:</div>
+        <div class="hint">Pilihan tema visual beranda aplikasi:</div>
         <div class="row">
-          <button id="wp-vibrant" class="on" onclick="setWp('vibrant')">
-            <span class="sw" style="background:linear-gradient(135deg,#1E3A8A,#2563EB)"></span>
-            1 · Vibrant Blue
+          <button id="wp-indigo" class="on" onclick="setWp('indigo')">
+            <span class="sw" style="background:linear-gradient(135deg,#1E1B4B,#4338CA)"></span>
+            1 · Deep Indigo
           </button>
           <button id="wp-unair" onclick="setWp('unair')">
             <span class="sw" style="background:linear-gradient(135deg,#0F172A,#B45309)"></span>
@@ -103,7 +103,7 @@
           </button>
           <button id="wp-emerald" onclick="setWp('emerald')">
             <span class="sw" style="background:linear-gradient(135deg,#064E3B,#10B981)"></span>
-            3 · Emerald Tech
+            3 · Emerald UMKM
           </button>
           <button id="wp-slate" onclick="setWp('slate')">
             <span class="sw" style="background:linear-gradient(135deg,#0B132B,#1F2937)"></span>
@@ -115,7 +115,7 @@
           </button>
           <button id="wp-violet" onclick="setWp('violet')">
             <span class="sw" style="background:linear-gradient(135deg,#2E1065,#8B5CF6)"></span>
-            6 · AI Violet
+            6 · AI Engine
           </button>
         </div>
       </div>
@@ -138,21 +138,21 @@
       </div>
     </div>
 
-    <!-- Catatan Pitching Rationale di Sebelah Kanan -->
+    <!-- Catatan Implementasi Sistem di Sebelah Kanan -->
     <div class="note">
       <div class="card" id="mnote"></div>
     </div>
   </div>
 
-  <!-- ══════════════ PANGGUNG DASHBOARD KAMPUS & INDUSTRI (DESKTOP) ══════════════ -->
+  <!-- ══════════════ PANGGUNG DASHBOARD WEB PLATFORM (DESKTOP) ══════════════ -->
   <div class="wstage hide" id="surface-w">
     <div class="browser">
       <div class="bbar">
         <div class="dots"><i></i><i></i><i></i></div>
         <div class="url">
           <svg class="i i-xs" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8.5 10V7a3.5 3.5 0 017 0v3"/></svg>
-          <span>skillbridge.unair.ac.id/hub/dashboard</span>
-          <span class="badge">PROD SECURE</span>
+          <span>skillbridge.test/admin/dashboard</span>
+          <span class="badge">SECURE</span>
         </div>
       </div>
       <div class="wapp">
@@ -160,7 +160,7 @@
           <div class="logo">SB</div>
           <nav id="wrail"></nav>
           <div class="me">
-            <span class="av" title="Dr. Ir. Bambang Hermanto, M.Kom">BH</span>
+            <span class="av" title="Ahmad Dhafin Al Farisy">AD</span>
           </div>
         </div>
         <div class="modnav">
